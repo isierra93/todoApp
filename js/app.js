@@ -2,15 +2,25 @@
 let taskInput = document.getElementById(`taskInput`);
 let taskAdd = document.getElementById(`taskAdd`);
 let taskList = document.getElementById(`taskList`);
+let dateLive = document.getElementById(`dateLive`);
+
+//LocalStorage
+let todoList = [];
+
+if (localStorage.getItem(`todoList`) == null) {
+    localStorage.setItem(`todoList`, JSON.stringify(todoList));
+} else {
+    todoList = JSON.parse(localStorage.getItem(`todoList`));
+}
 
 //Funciones
 const actualizarToDo = () => {
     todoList = JSON.parse(localStorage.getItem(`todoList`));
-    taskList.innerHTML = ``;
+    taskList.innerHTML = `<h3>My Day:</h3>`;
     todoList.forEach((element, i) => {
         let tarea = document.createElement(`li`);
         tarea.setAttribute(`id`, i);
-        tarea.innerHTML = `${element} <img src="img/remove.png" style="width: 1.5rem;height: 1.5rem;" alt="Remove pic" onClick="deleteTask(${i})">`;
+        tarea.innerHTML = ` ${element} <img src="img/remove.png" style="width: 1rem;height: 1rem;" alt="Remove pic" onClick="deleteTask(${i})">`;
         taskList.appendChild(tarea);
     });
 }
@@ -28,13 +38,17 @@ const addTaskToList = () => {
     actualizarToDo();
     taskInput.value = ``;
 }
-//LocalStorage
-let todoList = JSON.parse(localStorage.getItem(`todoList`)) || [];
+
+const reloj = () => {
+    let dt = DateTime.now();
+    dateLive.innerHTML = `<p>${dt.toLocaleString(DateTime.DATE_FULL)}</p>
+                        <p>${dt.toLocaleString(DateTime.TIME_24_WITH_SECONDS)}</p>`
+};
+
 
 //Eventos
 taskAdd.addEventListener(`click`, (e) => {
     e.preventDefault();
-
     if (taskInput.value != ``) {
         addTaskToList();
     }
@@ -48,8 +62,13 @@ taskInput.addEventListener(`keyup`, (event) => {
     }
 })
 
+//Hora actual
+const DateTime = luxon.DateTime;
+reloj();
+setInterval(reloj, 1000);
 
 
+// Ejecucion
 actualizarToDo();
 
 

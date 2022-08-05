@@ -5,24 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
     <title>Amonchi Tasks</title>
 </head>
 
 <body>
-    <main>
-        <div id="">
-
+    <main class="containerMain">
+        <div id="dateLive">
         </div>
-        <div class="containerInput">
-            <h1>Tasks</h1>
-            <input type="text" id="taskInput">
-            <button type="submit" id="taskAdd"><img src="img/add.png" alt="Add pic" class="addPic">Agregar</button> 
-        </div>
-        <div class="containerList">
-            <ul id="taskList"></ul>
+        <div class="containerTaskApp">
+            <form class="containerInput">
+                <h1>To Do App</h1>
+                <label for="taskInput">New task:</label>
+                <input type="text" id="taskInput">
+                <button type="submit" id="taskAdd"><img src="img/add.png" alt="Add pic" class="addPic"></button>
+            </form>
+            <div class="containerList">
+                <ul id="taskList"></ul>
+            </div>
         </div>
     </main>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/luxon.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 
