@@ -4,6 +4,8 @@ let taskAdd = document.getElementById(`taskAdd`);
 let taskList = document.getElementById(`taskList`);
 let dateLive = document.getElementById(`dateLive`);
 
+
+
 //LocalStorage
 let todoList = [];
 
@@ -16,12 +18,24 @@ if (localStorage.getItem(`todoList`) == null) {
 //Funciones
 const actualizarToDo = () => {
     todoList = JSON.parse(localStorage.getItem(`todoList`));
-    taskList.innerHTML = `<h3>My Day:</h3>`;
+    taskList.innerHTML = `<thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" colspan="2">Amonchitasks</th>
+
+                            </tr>
+                        </thead>`;
+    let tbody = document.createElement(`tbody`);
+    taskList.appendChild(tbody);
+
     todoList.forEach((element, i) => {
-        let tarea = document.createElement(`li`);
+        let tarea = document.createElement(`tr`);
         tarea.setAttribute(`id`, i);
-        tarea.innerHTML = ` ${element} <img src="img/remove.png" style="width: 1rem;height: 1rem;" alt="Remove pic" onClick="deleteTask(${i})">`;
-        taskList.appendChild(tarea);
+        let contador = i+1
+        tarea.innerHTML = `<th scope="row">${contador}</th>
+                            <td>${element}</td>
+                            <td><img class="removePic" src="img/remove.png" style="width: 1rem;height: 1rem;" alt="Remove pic" onClick="deleteTask(${i})"></td>`
+        tbody.appendChild(tarea);
     });
 }
 
@@ -62,11 +76,17 @@ taskInput.addEventListener(`keyup`, (event) => {
     }
 })
 
+//Tracker
+const tracker = document.querySelector(".tracker");
+document.body.addEventListener(`mousemove`, e => {
+    tracker.style.left = `${e.clientX}px`;
+    tracker.style.top = `${e.clientY}px`;
+})
+
 //Hora actual
 const DateTime = luxon.DateTime;
 reloj();
 setInterval(reloj, 1000);
-
 
 // Ejecucion
 actualizarToDo();
