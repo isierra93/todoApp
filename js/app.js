@@ -4,6 +4,12 @@ let taskAdd = document.getElementById(`taskAdd`);
 let taskList = document.getElementById(`taskList`);
 let dateLive = document.getElementById(`dateLive`);
 
+let todoDoneList = [];
+if (localStorage.getItem(`todoDoneList`) == null) {
+    localStorage.setItem(`todoDoneList`, JSON.stringify(todoDoneList));
+} else {
+    todoDoneList = JSON.parse(localStorage.getItem(`todoDoneList`));
+}
 
 
 //LocalStorage
@@ -21,7 +27,8 @@ const actualizarToDo = () => {
     taskList.innerHTML = `<thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col" colspan="2">Amonchitasks</th>
+                                <th scope="col">Tasks</th>
+                                <th scope="col">Done?</th>
 
                             </tr>
                         </thead>`;
@@ -40,6 +47,8 @@ const actualizarToDo = () => {
 }
 
 const deleteTask = (i) => {
+    todoDoneList.unshift(todoList[i]);
+    localStorage.setItem(`todoDoneList`, JSON.stringify(todoDoneList));
     todoList.splice(i, 1);
     localStorage.setItem(`todoList`, JSON.stringify(todoList));
     actualizarToDo()

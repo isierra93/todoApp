@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/catico.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
     <title>Amonchi Tasks</title>
@@ -23,13 +26,14 @@
 
         <div class="containerTaskApp row mt-5">
             <form class="containerInput col-6 d-flex flex-column mt-5">
-                <h1>To Do App</h1>
+                <h1 class="titleTodoapp">To Do App</h1>
                 <label for="taskInput" class="mt-2">New task:</label>
-                <input type="text"  class="mt-3" id="taskInput">
-                <button type="submit" id="taskAdd" class="btn btn-outline-success mt-3"><img src="img/add.png" class="addPic" alt="Add pic"></button>
+                <input type="text" class="mt-3" id="taskInput">
+                <button type="submit" id="taskAdd" class="btn btn-dark mt-3"><img src="img/add.png" class="addPic"
+                        alt="Add pic"></button>
             </form>
             <div class="containerList col-6 mt-5">
-                <table id="taskList" class="table table-dark table-striped"></table>      
+                <table id="taskList" class="table table-dark table-striped"></table>
             </div>
         </div>
 
