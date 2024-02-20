@@ -1,5 +1,4 @@
-import { Title } from './components/Title.tsx';
-import { Form } from './components/Form.tsx';
+import { TodoWrapper } from './components/TodoWrapper.tsx';
 
 import './App.css'
 
@@ -7,8 +6,7 @@ function App() {
 
   return (
     <>
-      <Title />
-      <Form />
+      <TodoWrapper />
     </>
   )
 }
