@@ -1,16 +1,23 @@
 import { useState } from 'react'
 
-interface TodoFormProps {
-    addTodo: (todo: string) => void;
+interface EditTodoFormProps {
+    task: {
+            task: string;
+            id: string;
+            time: Date;
+            completed: boolean;
+            isEdiging: boolean;
+    }
+    updateTodo: (todo: string, id: string) => void;
 }
 
-export const TodoForm = ({addTodo}:TodoFormProps) => {
+export const EditTodoForm = ({ task, updateTodo }: EditTodoFormProps) => {
 
-    const [value, setValue] = useState('')
-
-    const handleSubmit = (e: { preventDefault: () => void }) =>{
+    const [value, setValue] = useState(task.task)
+    
+    const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault()
-        addTodo(value)
+        updateTodo(value, task.id)
         setValue('')
     }
 
@@ -23,7 +30,7 @@ export const TodoForm = ({addTodo}:TodoFormProps) => {
                     id='title'
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
-                    placeholder='Add new task'
+                    placeholder='Update task'
                     required
                 />
             </label>
