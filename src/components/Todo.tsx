@@ -1,19 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-
-interface TodoProps {
-    task: {
-        task: string;
-        id: string;
-        time: Date;
-        completed: boolean;
-        isEdiging: boolean;
-    }
-    toggleComplete: (id: string) => void;
-    deleteTodo: (id: string) => void;
-    editTodo: (id: string) => void;
-}
+import { TodoProps } from '../interfaces/interfaces.ts'
 
 export const Todo = ({ task, toggleComplete, deleteTodo, editTodo }: TodoProps) => {
 

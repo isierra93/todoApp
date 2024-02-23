@@ -1,15 +1,5 @@
 import { useState } from 'react'
-
-interface EditTodoFormProps {
-    task: {
-            task: string;
-            id: string;
-            time: Date;
-            completed: boolean;
-            isEdiging: boolean;
-    }
-    updateTodo: (todo: string, id: string) => void;
-}
+import { EditTodoFormProps } from '../interfaces/interfaces.ts';
 
 export const EditTodoForm = ({ task, updateTodo }: EditTodoFormProps) => {
 

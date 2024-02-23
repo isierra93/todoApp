@@ -1,8 +1,5 @@
 import { useState } from 'react'
-
-interface TodoFormProps {
-    addTodo: (todo: string) => void;
-}
+import { TodoFormProps } from '../interfaces/interfaces.ts';
 
 export const TodoForm = ({addTodo}:TodoFormProps) => {
 
