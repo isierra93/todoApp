@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TodoFormProps } from '../interfaces/interfaces.ts';
+import { TodoFormProps } from '../interfaces/interfaces.ts'
 
 export const TodoForm = ({addTodo}:TodoFormProps) => {
 
