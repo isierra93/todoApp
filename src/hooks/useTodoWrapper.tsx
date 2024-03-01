@@ -58,8 +58,8 @@ export function useTodoWrapper() {
     let dataParse = JSON.parse(data)
     return dataParse
   }
-
-  const saveStorage = (tasks) => {
+  
+  const saveStorage = (tasks: { task: string; id: string; time: Date; completed: boolean; isEdiging: boolean; }[]) => {
     localStorage.setItem("todoApp", JSON.stringify(tasks))
   }
 
