@@ -6,7 +6,7 @@ import { TodoProps } from '../interfaces/interfaces.ts'
 export const Todo = ({ task, toggleComplete, deleteTodo, editTodo }: TodoProps) => {
 
     return (
-        <div className="Todo" >
+        <div className="Todo animate__animated animate__headShake" id={task.id} >
             <p className={task.completed ? 'completed' : ''}
                 onClick={() => toggleComplete(task.id)}>
                 {task.task}
